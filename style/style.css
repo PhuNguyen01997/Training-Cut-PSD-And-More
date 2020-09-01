@@ -1210,20 +1210,34 @@ button:hover {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin: 3rem 0 0 0;
+  margin: 3rem auto 0;
+  max-width: 114rem;
 }
 
 .select__column-2 {
-  width: 26.2rem;
   background-color: white;
   font-size: 1.2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-areas: 'header header header header header' 'brand priceRange another pricing footer';
+}
+
+.select__column-2 > * {
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 
 .filter__header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+  grid-area: header;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0 2rem;
+  padding: 0 0 0 2rem;
   height: 5rem;
   border-bottom: 1px solid var(--border);
 }
@@ -1247,9 +1261,13 @@ button:hover {
   font-size: 1.2rem;
   color: var(--text-3rd);
   background-color: white;
+  padding-right: 2rem;
 }
 
 .filter__brand {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: brand;
   padding: 2rem;
   display: -ms-grid;
   display: grid;
@@ -1306,6 +1324,9 @@ button:hover {
 }
 
 .filter__price-range {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: priceRange;
   border-bottom: 1px solid var(--border);
   padding: 2rem;
 }
@@ -1346,6 +1367,18 @@ button:hover {
   padding-top: 4rem;
 }
 
+.filter__another {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: another;
+}
+
+.filter__pricing {
+  -ms-grid-row: 2;
+  -ms-grid-column: 4;
+  grid-area: pricing;
+}
+
 .filter__select {
   border-bottom: 1px solid var(--border);
 }
@@ -1368,12 +1401,17 @@ button:hover {
   color: var(--text-3rd);
 }
 
+.filter__select--list {
+  background-color: #fff6db;
+}
+
 .filter__select--list li {
   -webkit-transition-property: color, text-shadow;
   transition-property: color, text-shadow;
   -webkit-transition-duration: 0.8s, 0.2s;
           transition-duration: 0.8s, 0.2s;
   padding: 1.5rem 2rem 1.5rem 4rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .filter__select--list li:hover {
@@ -1395,8 +1433,19 @@ button:hover {
 }
 
 .filter__footer {
+  -ms-grid-row: 2;
+  -ms-grid-column: 5;
+  grid-area: footer;
   padding: 2rem 0;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .filter__footer--btn {
@@ -2299,6 +2348,29 @@ button:hover {
   }
   #owl-carousel--2 .owl-prev, #owl-carousel--2 .owl-next {
     border: 1px solid var(--border);
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .select {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .select__column-2 {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'header footer' 'brand priceRange' 'another pricing';
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .select__column-2 {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: 'header' 'brand' 'priceRange' 'another' 'pricing' 'footer';
   }
 }
 

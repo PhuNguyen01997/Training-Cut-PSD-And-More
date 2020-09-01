@@ -882,16 +882,27 @@ button:hover{
 .select{
     display: flex;
     justify-content: space-around;
-    margin: 3rem 0 0 0;
+    margin: 3rem auto 0;
+    max-width: 114rem;
 }
 .select__column-2{
-    width: 26.2rem;
     background-color: white;
     font-size: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: 
+        'header header header header header'
+        'brand priceRange another pricing footer'
+    ;
+    & > * {
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+    }
 }
 .filter__header{
+    grid-area: header;
     display: flex;
-    padding: 0 2rem;
+    padding: 0 0 0 2rem;
     height: 5rem;
     border-bottom: 1px solid var(--border);
     &--text{
@@ -906,9 +917,11 @@ button:hover{
         font-size: 1.2rem;
         color: var(--text-3rd);
         background-color: white;
+        padding-right: 2rem;
     }
 }
 .filter__brand{
+    grid-area: brand;
     padding: 2rem;
     display: grid;
     border-bottom: 1px solid var(--border);
@@ -946,6 +959,7 @@ button:hover{
     }
 }
 .filter__price-range{
+    grid-area: priceRange;
     border-bottom: 1px solid var(--border);
     padding: 2rem;
     &--title{
@@ -977,6 +991,12 @@ button:hover{
 .filter__price-range--slide{
     padding-top: 4rem;
 }
+.filter__another{
+    grid-area: another;
+}
+.filter__pricing{
+    grid-area: pricing;
+}
 .filter__select{
     border-bottom: 1px solid var(--border);
     &--title{
@@ -990,10 +1010,12 @@ button:hover{
         }
     }
     &--list{
+        background-color: rgb(255, 246, 219);
         li{
             transition-property: color, text-shadow;
             transition-duration: 0.8s, 0.2s;
             padding: 1.5rem 2rem 1.5rem 4rem;
+            border-bottom: 1px solid var(--border);
         }
         li:hover{
             text-decoration: underline;
@@ -1013,8 +1035,11 @@ button:hover{
     }
 }
 .filter__footer{
+    grid-area: footer;
     padding: 2rem 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &--btn{
         width: 14.5rem;
         height: 4rem;
@@ -1717,6 +1742,30 @@ button:hover{
         .owl-prev, .owl-next{
             border: 1px solid var(--border);
         }
+    }
+}
+//------------------------------------
+// Responsive for ADVERTISE
+//------------------------------------
+@media screen and (max-width: 1300px){
+    .select{
+        max-width: 100%;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1070px){
+    .select__column-2{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            'header footer'
+            'brand priceRange'
+            'another pricing';
+    }
+}
+@media screen and (max-width: 460px){
+    .select__column-2{
+        grid-template-columns: 1fr;
+        grid-template-areas: 'header' 'brand' 'priceRange' 'another' 'pricing' 'footer';
     }
 }
 //------------------------------------

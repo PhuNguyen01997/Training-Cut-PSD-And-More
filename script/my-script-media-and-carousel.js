@@ -89,10 +89,15 @@ $(document).ready(function () {
         },
     });
     owlPlayer.on('changed.owl.carousel', function(event) {
+        const content = $(this).parents(".player__grid-item-3").find(".player__content");
         $(".player__grid-item-3 .player__trigger--playing").removeClass("player__trigger--playing"); // Set are button trigger status to not playing becaue some button may set is playing before click changes
         setTimeout(function(){
             setWaveThird();
-            console.log("yo")
+
+            const songName = $(event.target).find(".center .temp-data span:first-child").text();
+            const songSinger = $(event.target).find(".center .temp-data span:last-child").text();
+            content.children("h2").text(songName);
+            content.children("p").text(songSinger);
         },500)
     })
 
@@ -101,8 +106,7 @@ $(document).ready(function () {
     var video = {
         currentVd: {
             name: `"A Night to Remember" Launch Cinematic`,
-            // url: "https://www.youtube.com/embed/ehjJ614QfeM",
-            url: "https://www.youtube.com/embed/Tx9WyKtLzio",
+            url: "https://www.youtube.com/embed/ehjJ614QfeM",
             imgPresent: "./images/vd-4-img.jpg",
             gifPresent: "./images/vd-4.gif",
             viewer: "12,434,934",
@@ -249,7 +253,6 @@ $(document).ready(function () {
     //-- Change button pause or play music ( > || )  when click
     $(".player__trigger").on("click",function(){
         if(this.dataset.type === "wave"){
-            console.log("click");
             const index = this.dataset.name === "waveform-solo" ? 0 : 1; // because i has only two waveform
             // waveArr[index].setPlaybackRate(10);
             if( waveArr[index].isReady ){
