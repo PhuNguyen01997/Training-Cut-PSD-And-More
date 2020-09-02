@@ -1,4 +1,10 @@
 $(document).ready(function () {
+//--Welcome Label close script
+    $(".welcome").on("click",function(event){
+        if( $(event.target).hasClass("welcome") || $(event.target).hasClass("welcome__close") ){
+            $(this).css("display","none");
+        }
+    })
 //-- Advertise
     //--Effect when focus in input__subcribe
     $(".advertise__subcribe--ipt").children("input").focusin(function(){
