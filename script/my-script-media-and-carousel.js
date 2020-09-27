@@ -207,6 +207,13 @@ $(document).ready(function () {
     function setWaveThird(){
         waveThird.load($(".player__grid-item-3").find("#owl-carousel--player .center audio").attr("src")); // get audio from carousel center
     }
+    waveThird.on('loading', function () {
+        $("#waveform-third span").css("opacity", "1");
+    });
+    waveThird.on('ready', function () {
+        $("#waveform-third span").css("opacity", "0");
+        console.log($("#waveform-third span"));
+    });
 
     var waveArr = [waveSolo, waveThird];
     var isPlaying;

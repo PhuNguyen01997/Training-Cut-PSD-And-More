@@ -28,6 +28,9 @@ body{
         line-height: 2.2rem;
     }
 }
+button{
+    outline: none;
+}
 button:hover{
     box-shadow: 1px 1px 5px grey;
 }
@@ -48,32 +51,26 @@ button:hover{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    overflow: hidden;
-    border-radius: 1rem;
 }
 .welcome__content{
     color: white;
     width: 80%;
     height: 100%;
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
+    padding: 10rem;
     h2{
         margin-top: 3rem;
-        font-size: 3rem;
+        font-size: 5rem;
         color: white;
     }
     p{
         margin-top: 3rem;
         margin-bottom: 3rem;
-        font-size: 2rem;
+        font-size: 3rem;
         line-height: 3rem;
     }
     a{
-        font-size: 2rem;
+        font-size: 3rem;
         color: white;
         text-decoration: underline;
     }
@@ -84,17 +81,9 @@ button:hover{
 }
 .welcome__close{
     position: absolute;
-    left: 1rem;
-    top: 1rem;
-    font-size: 5rem;
+    left: 0;
+    font-size: 10rem;
     color: white;
-    transition: 0.2s;
-    &:hover{
-        transform: scale(1.2,1.2);
-    }
-    &:active{
-        box-shadow: 0 0 5px white;
-    }
 }
 .wrapper{
     width: 130rem;
@@ -315,6 +304,7 @@ button:hover{
     .player__music-wave{
         height: 4rem;
         margin: 1.5rem 0 0 0;
+        position: relative;
     }
     .player__footer{
         padding: 1.5rem 2rem;
